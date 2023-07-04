@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=C1 Old Footprint=POLAR0.8 New Footprint=RB7.6-15
+Change Component Footprint: Designator=C2 Old Footprint=POLAR0.8 New Footprint=RB7.6-15
+Change Component Comment: Designator=C1 Old Comment=Cap Pol2 New Comment=Cap Pol1
+Change Component Comment: Designator=C2 Old Comment=Cap Pol2 New Comment=Cap Pol1

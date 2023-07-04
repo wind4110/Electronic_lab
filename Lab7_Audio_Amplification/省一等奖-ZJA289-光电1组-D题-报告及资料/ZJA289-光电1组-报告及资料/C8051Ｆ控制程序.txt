@@ -1,0 +1,346 @@
+//包含文件
+#include <c8051f020.h> // SFR声明
+#include <stdio.h>
+#include <intrins.h>
+
+sfr16 TMR3RL = 0x92;  // 定时器3重装值
+sfr16 TMR3 = 0x94;    // 定时器3计数器
+#define SYSCLK 11059200 // 系统时钟频率Hz
+
+sbit ad9850_rest=P3^0;
+sbit ad9850_fq_up=P3^2;
+sbit ad9850_w_clk=P3^4;
+sbit ad9850_bit_data=P3^6;
+sbit Int1=P2^3;
+
+sbit signal_1 = P3^7;
+sbit signal_2 = P3^5;
+sbit signal_3 = P3^3;
+sbit signal_4 = P3^1;
+
+unsigned int timer0_count,int1_count,xx=0;
+unsigned char flag,ledcode[8]={0,0,0,0,0,0,0,0};
+unsigned long int fx;
+unsigned char KeyTab[16] ={ 0xEE,0xED,0xEB,0xE7,
+							0xDE,0xDD,0xDB,0xD7,
+							0xBE,0xBD,0xBB,0xB7,
+							0x7E,0x7D,0x7B,0x77
+};
+unsigned char KeyCode=0xFF;
+
+//函数声明
+void SYSCLK_Init(void);
+void PORT_Init(void);
+void Inittimer(void);
+void Int_Init (void);
+void control_Init(void);
+void ad9850_reset_serial(void);
+void Delay1us(unsigned char us);
+void ad9850_wr_serial(unsigned char w0,double frequence);
+void display();
+unsigned long int cepin(void);
+void getcode(unsigned char);
+
+
+
+void main()
+{
+	unsigned long int fx;
+	unsigned char i;
+	WDTCN = 0xde; WDTCN = 0xad; // 禁止看门狗定时器 
+	SYSCLK_Init();
+	PORT_Init();
+	Inittimer();	
+	Int_Init();	
+	control_Init();
+	for(i=0;i<2;i++)
+	fx=4000;
+putagain:
+	fx=cepin();	
+	fx=fx-350;
+	if(fx<0||fx>20000)
+	goto putagain;
+	ad9850_reset_serial();
+	ad9850_wr_serial(0x00,fx*256);
+	xx=0;	
+	while(1) 
+{	ledcode[7]=(fx/10000000)%10;
+	ledcode[6]=(fx/1000000)%10;
+	ledcode[5]=(fx/100000)%10;
+	ledcode[4]=(fx/10000)%10;
+	ledcode[3]=(fx/1000)%10;
+	ledcode[2]=(fx/100)%10;
+	ledcode[1]=(fx/10)%10;
+	ledcode[0]=(fx/1)%10;
+	display();
+	xx++;
+	if(xx>500)
+	goto putagain;	
+}
+}
+
+//***************************************************//
+//          向ad9850中写命令与数据(串口)             //
+//---------------------------------------------------//
+
+void SYSCLK_Init (void)
+{
+    int i;                           // 延时计数器
+    OSCXCN = 0x67;                   // 开启外部振荡器11.0592MHz晶体
+    for (i=0; i < 256; i++) ;        // 等待振荡器启振
+    while (!(OSCXCN & 0x80)) ;       // 等待晶体振荡器稳定
+    OSCICN = 0x88;                   // 选择外部振荡器为系统时钟源并允许丢失时钟检测器
+	EA=0;
+}
+
+// 配置数据交叉开关和通用IO口
+void PORT_Init (void)
+{
+    XBR0 = 0xa7;                     // 使能UART0等
+    XBR1 = 0x1f;
+    XBR2 = 0x44;                     // 使能数据交叉开关和弱上拉
+	P7 = 0xF0;
+	Int1=1;
+}
+
+void Delay1us(unsigned char us)
+{
+	for(;us;us--)
+	  _nop_(), _nop_(), _nop_(),_nop_(), _nop_(), _nop_();
+}
+
+void Inittimer(void)
+{
+    CKCON |=0x00;          //选择系统频率作为计数器0和计数器1的时钟.
+    TMOD  |=0x01;          //定时器0，工作方式1;定时器1，工作方式1，由外部输入负跳变加1.
+	IT1 = 1;               // /INT1选择为边沿触发
+    TH0=  0;                //定时0初始化
+    TL0=  0;	
+    EA  = 1;               //打开总中断
+    ET0 = 1;               //打开定时器0中断
+	EX1 = 0;               //关闭外部中断1
+    TR0 = 0;               //关闭定时器0
+
+}
+
+
+//AD9850初始化，选择串行方式
+void ad9850_reset_serial()
+{
+    ad9850_w_clk=0;
+    ad9850_fq_up=0;
+    //rest信号
+    ad9850_rest=0;
+    ad9850_rest=1;Delay1us(1);
+    ad9850_rest=0;
+    //w_clk信号
+    ad9850_w_clk=0;
+    ad9850_w_clk=1;Delay1us(1);
+    ad9850_w_clk=0;
+    //fq_up信号
+    ad9850_fq_up=0;
+    ad9850_fq_up=1;Delay1us(1);
+    ad9850_fq_up=0;
+}
+
+//AD9850频率发生器函数
+void ad9850_wr_serial(unsigned char w0,double frequence)
+{
+    int num;
+    unsigned char i,w;
+    long int y;
+    double x;
+                           
+    x=4294967295/100;            //计算频率的HEX值，适合100M晶振
+    frequence=frequence/1000000;
+    frequence=frequence*x;
+    y=frequence;                  //写w4数据,ps:32位数据从低位开始传输，最后传输高位
+    w=(y>>=0);
+    for(i=0;i<8;i++)
+    {
+        num=(w>>i)&0x01;
+        if(num)
+          ad9850_bit_data=1;
+        else
+          ad9850_bit_data=0;
+      
+        ad9850_w_clk=1;Delay1us(2);
+        ad9850_w_clk=0;Delay1us(2);
+    }
+    //写w3数据
+    w=(y>>8);
+    for(i=0;i<8;i++)
+    {
+        num=(w>>i)&0x01;
+        if(num)
+          ad9850_bit_data=1;
+        else
+          ad9850_bit_data=0;
+        
+        ad9850_w_clk=1;Delay1us(2);
+        ad9850_w_clk=0;Delay1us(2);
+    }
+    //写w2数据
+    w=(y>>16);
+    for(i=0;i<8;i++)
+    {
+        num=(w>>i)&0x01;
+        if(num)
+          ad9850_bit_data=1;
+        else
+          ad9850_bit_data=0;
+        
+        ad9850_w_clk=1;Delay1us(2);
+        ad9850_w_clk=0;Delay1us(2);
+    }
+    //写w1数据
+    w=(y>>24);
+    for(i=0;i<8;i++)
+    {
+        num=(w>>i)&0x01;
+        if(num)
+          ad9850_bit_data=1;
+        else
+          ad9850_bit_data=0;
+        
+        ad9850_w_clk=1;Delay1us(2);
+        ad9850_w_clk=0;Delay1us(2);
+    }
+    //写w0数据
+    w=w0;   
+    for(i=0;i<8;i++)
+    {
+        num=(w>>i)&0x01;
+        if(num)
+          ad9850_bit_data=1;
+        else
+          ad9850_bit_data=0;
+        
+        ad9850_w_clk=1;Delay1us(2);
+        ad9850_w_clk=0;Delay1us(2);
+    }
+    //移入始能
+    ad9850_fq_up=1;Delay1us(8);
+    ad9850_fq_up=0;
+}
+
+//测频函数
+unsigned long int cepin(void)
+{
+	unsigned int N1,N2,n;
+	unsigned long int ff;
+	timer0_count = 0;
+	int1_count = 0;	 
+	TH0=0;
+	TL0=0;  
+	flag = 0;
+	EX1 = 1;       //打开外部中断1
+;	while(int1_count<20);  //计数50+2次，外部中断1启动时一次，最后再次打开外部中断1时一次
+	flag= 1;
+	N1=20;      
+	n = timer0_count;     //定时器0的溢出次数
+	N2=TH0;	       //取定时器0的剩余读数
+	N2=N2<<8;
+	N2=N2|TL0;
+	ff=2*N1*SYSCLK/(12*(65536*n+N2));  //计算频率
+	return(ff);		
+}
+
+//定时器0中断函数
+void IsrTimer0() interrupt 1
+{
+	TL0=0;
+    TH0=0;
+	TR0=1;
+    timer0_count++;
+}
+
+//外部中断1中断函数
+void aps_Int1() interrupt 2
+{	
+	if(TR0==0) TR0=1;
+	if(flag==1) {TR0=0;EX1=0;}
+	int1_count++;	
+}
+
+//共阴LED数码管译码表
+unsigned char code ledmap[]= 
+{ 
+ 	0x3f,0x06,0x5b,0x4f,0x66, //0,1,2,3,4,
+ 	0x6d,0x7d,0x07,0x7f,0x6f, //5,6,7,8,9,  
+ 	0x77,0x7C,0x39,0x5E,0x79, //A,b,C,d,E,
+ 	0x71,      //F,
+};
+
+//LED管显示
+void display()
+{
+ 	static unsigned char j=0;
+	P5=ledmap[ledcode[j]]; 
+	P6=j;
+	j=(++j)%8;	
+}
+
+void Int_Init (void)
+{
+    EA = EX0 = 1; IT0 = 1;    // 允许外部中断0 边沿触发
+}
+
+void control_Init(void)
+{
+	unsigned char i;
+	signal_1=signal_2=signal_3=signal_4=0;
+	for(i=0;i<100;i++)
+{
+	signal_2=signal_4=1;
+	Delay1us(100);
+	signal_2=signal_4=0;
+	Delay1us(100);
+}
+	signal_1=1;
+	for(i=0;i<19;i++)
+{
+	signal_2=1;
+	Delay1us(100);
+	signal_2=0;
+	Delay1us(100);
+}
+	signal_1=0;
+}
+void INT0_ISR (void) interrupt 0 using 3
+{
+    unsigned char i;
+
+	KeyCode = P7;            // 读键盘高4位；
+	for(i=0;i<200;i++) Delay1us(100); 
+	if(KeyCode != P7) 
+{
+	KeyCode=0xFF;
+	return;
+}
+	P7 ^= 0xFF;
+	Delay1us(20);
+	KeyCode |= P7; 
+	P7 ^= 0xFF;
+	getcode(KeyCode);
+}
+
+
+void getcode(unsigned char byte)
+{
+	unsigned char i;
+	for(i=0;i<16;i++)
+	if(KeyTab[i]==byte) break;
+
+	if(i==0||i==1||i==2||i==3)
+{	signal_1=1;Delay1us(1);signal_2=1;Delay1us(10);signal_2=0;}
+	
+	else if(i==4||i==5||i==6||i==7)	
+{	signal_1=0;Delay1us(1);signal_2=1;Delay1us(10);signal_2=0;}
+	
+	else if(i==8||i==9||i==10||i==11)	
+{	signal_3=1;Delay1us(1);signal_4=1;Delay1us(10);signal_4=0;}
+	
+	else if(i==12||i==13||i==14||i==15)	
+{	signal_3=0;Delay1us(1);signal_4=1;Delay1us(10);signal_4=0;}	
+}

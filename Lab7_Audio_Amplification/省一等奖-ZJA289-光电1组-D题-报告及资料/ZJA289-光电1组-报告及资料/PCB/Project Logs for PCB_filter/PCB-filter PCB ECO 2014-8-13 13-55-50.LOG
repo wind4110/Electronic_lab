@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=RCLK Old Footprint=J1-0603 New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=RG Old Footprint=J1-0603 New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=RH4 Old Footprint=J1-0603 New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=RL4 Old Footprint=J1-0603 New Footprint=AXIAL-0.3
