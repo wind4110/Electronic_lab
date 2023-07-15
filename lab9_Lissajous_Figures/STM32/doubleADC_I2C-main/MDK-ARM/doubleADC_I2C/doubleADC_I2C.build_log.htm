@@ -1,0 +1,133 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Cedar Song, zju, LIC=TIVNB-2J3BD-SB3EJ-U05JW-ZJPCS-BM6YC
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.37.0.0
+Toolchain Path:  D:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+e:\codes\STM32\CubeMX\doubleADC_I2C\MDK-ARM\doubleADC_I2C.uvprojx
+Project File Date:  07/08/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
+Build target 'doubleADC_I2C'
+compiling stm32f1xx_it.c...
+compiling gpio.c...
+compiling main.c...
+..\Drivers\hmi_driver\hmi_driver.h(73): warning:  #1295-D: Deprecated declaration GUI_CleanScreen - give arg types
+  void GUI_CleanScreen();
+..\Drivers\hmi_driver\hmi_driver.h(270): warning:  #1295-D: Deprecated declaration CalibrateTouchPane - give arg types
+  void CalibrateTouchPane();
+..\Drivers\hmi_driver\hmi_driver.h(275): warning:  #1295-D: Deprecated declaration TestTouchPane - give arg types
+  void TestTouchPane();
+..\Drivers\hmi_driver\hmi_driver.h(624): warning:  #1295-D: Deprecated declaration BatchEnd - give arg types
+  void BatchEnd();
+..\Drivers\hmi_driver\hmi_driver.h(720): warning:  #1295-D: Deprecated declaration FlashEndSaveControl - give arg types
+  void FlashEndSaveControl();
+../Core/Src/main.c(126): warning:  #940-D: missing return statement at end of non-void function "Set_Signal_Value" 
+  }
+../Core/Src/main.c(107): warning:  #177-D: variable "address_mid"  was declared but never referenced
+      int address_mid = (*address_high + * address_low)/2;
+../Core/Src/main.c(213): warning:  #223-D: function "TPL0401A_Init" declared implicitly
+    TPL0401A_Init();
+../Core/Src/main.c(250): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
+../Core/Src/main.c(251): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+../Core/Src/main.c(252): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
+../Core/Src/main.c(253): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
+../Core/Src/main.c(254): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 1);
+../Core/Src/main.c(257): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
+../Core/Src/main.c(258): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+../Core/Src/main.c(259): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
+../Core/Src/main.c(260): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
+../Core/Src/main.c(261): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 0);
+../Core/Src/main.c(264): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
+../Core/Src/main.c(265): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+../Core/Src/main.c(266): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
+../Core/Src/main.c(267): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
+../Core/Src/main.c(268): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 0);
+../Core/Src/main.c(271): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
+../Core/Src/main.c(272): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+../Core/Src/main.c(273): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
+../Core/Src/main.c(274): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
+../Core/Src/main.c(275): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 0);
+../Core/Src/main.c(278): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
+../Core/Src/main.c(279): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+../Core/Src/main.c(280): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
+../Core/Src/main.c(281): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1); 
+../Core/Src/main.c(282): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 0);
+../Core/Src/main.c(343): warning:  #223-D: function "Set_TPL0401A_Value" declared implicitly
+      Set_TPL0401A_Value(Res);
+../Core/Src/main.c(314): warning:  #550-D: variable "PC0_Vpp"  was set but never used
+      int PC0_Vpp = 0;
+../Core/Src/main.c: 35 warnings, 0 errors
+linking...
+Program Size: Code=9732 RO-data=396 RW-data=28 ZI-data=6492  
+FromELF: creating hex file...
+"doubleADC_I2C\doubleADC_I2C.axf" - 0 Error(s), 35 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.0.pack
+                Keil.STM32F1xx_DFP.2.4.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_doubleADC_I2C
+  D:/Keil/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  D:/Keil/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>
