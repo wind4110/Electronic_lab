@@ -1,6 +1,6 @@
 doubleadc_i2c\tpl0401a.o: ..\Core\Src\TPL0401A.c
 doubleadc_i2c\tpl0401a.o: ../Core/Inc/TPL0401A.h
-doubleadc_i2c\tpl0401a.o: D:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
+doubleadc_i2c\tpl0401a.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
 doubleadc_i2c\tpl0401a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 doubleadc_i2c\tpl0401a.o: ../Core/Inc/stm32f1xx_hal_conf.h
 doubleadc_i2c\tpl0401a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
@@ -14,7 +14,7 @@ doubleadc_i2c\tpl0401a.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 doubleadc_i2c\tpl0401a.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 doubleadc_i2c\tpl0401a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 doubleadc_i2c\tpl0401a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-doubleadc_i2c\tpl0401a.o: D:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stddef.h
+doubleadc_i2c\tpl0401a.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stddef.h
 doubleadc_i2c\tpl0401a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 doubleadc_i2c\tpl0401a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 doubleadc_i2c\tpl0401a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h

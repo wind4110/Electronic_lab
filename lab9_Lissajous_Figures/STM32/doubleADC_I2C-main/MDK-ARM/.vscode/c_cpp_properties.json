@@ -3,16 +3,16 @@
         {
             "name": "doubleADC_I2C",
             "includePath": [
-                "c:\\Users\\dell\\Downloads\\doubleADC_I2C-main\\Core\\Inc",
-                "c:\\Users\\dell\\Downloads\\doubleADC_I2C-main\\Drivers\\STM32F1xx_HAL_Driver\\Inc",
-                "c:\\Users\\dell\\Downloads\\doubleADC_I2C-main\\Drivers\\STM32F1xx_HAL_Driver\\Inc\\Legacy",
-                "c:\\Users\\dell\\Downloads\\doubleADC_I2C-main\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
-                "c:\\Users\\dell\\Downloads\\doubleADC_I2C-main\\Drivers\\CMSIS\\Include",
-                "c:\\Users\\dell\\Downloads\\doubleADC_I2C-main\\Drivers\\hmi_driver",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Core\\Inc",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\STM32F1xx_HAL_Driver\\Inc",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\STM32F1xx_HAL_Driver\\Inc\\Legacy",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\CMSIS\\Include",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\hmi_driver",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include",
-                "c:\\Users\\dell\\Downloads\\doubleADC_I2C-main\\MDK-ARM",
-                "c:\\Users\\dell\\Downloads\\doubleADC_I2C-main\\Core\\Src",
-                "c:\\Users\\dell\\Downloads\\doubleADC_I2C-main\\Drivers\\STM32F1xx_HAL_Driver\\Src"
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\MDK-ARM",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Core\\Src",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\STM32F1xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

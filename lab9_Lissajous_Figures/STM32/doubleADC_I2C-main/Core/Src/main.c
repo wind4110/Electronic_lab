@@ -126,19 +126,11 @@ int Set_Signal_Value(int set_value, int ADC_value, uchar *address, uchar *addres
 }
 
 void Lissajous_Figures(uint16 *xdata, uint16 *ydata, uint16 x0, uint16 y0, uint16 N)
-{
 
-  // for (int i = 0;i < N-2; i++)
-  // {
-  //   GUI_Line(xdata[i]/16 + x0, ydata[i]/16 + y0, xdata[i + 2]/16 + x0, ydata[i + 2]/16 + y0);
-  // }
   for (int i = 0; i < N - 3; i += 2)
   {
     uint16 x_start = ADC_Value[i] / 16 + x0;
     uint16 y_start = ADC_Value[i + 1] / 16 + y0;
-    // uint16 x_end = ADC_Value[i + 2] / 16 + x0;
-    // uint16 y_end = ADC_Value[i + 3] / 16 + y0;
-    // GUI_Line(x_start, y_start, x_end, y_end);
     GUI_Dot(x_start, y_start);
   }
 }
@@ -222,28 +214,6 @@ int main(void)
 	
   while (1)
   {
-    // if (Key_Scan(GPIOA, GPIO_PIN_0) == KEY_ON)
-    // {
-    //   if (Output_Mode == 1){
-    //     Counter_Freq = (Counter_Freq) % 5 + 1;
-    //     printf("Counter_Freq = %d, Selecter_Voltage = %d, Output_Mode = %d\r\n", Counter_Freq, Selecter_Voltage, Output_Mode); // 0 for Freq, 1 for Voltage
-    //   }
-    //   else if(Output_Mode == 0)
-    //   {
-    //     Selecter_Voltage = (Selecter_Voltage)% 3 + 1;
-    //     Res = 0x1A;
-    //     Res_High = 0x7F;
-    //     Res_Low = 0x00;
-    //     printf("Counter_Freq = %d, Selecter_Voltage = %d, Output_Mode = %d\r\n", Counter_Freq, Selecter_Voltage, Output_Mode); // 0 for Freq, 1 for Voltage
-    //   }
-    // }
-    
-    
-    // if (Key_Scan(GPIOC, GPIO_PIN_13) == KEY_ON) // Key2, Set Mode
-    // {
-    //   Output_Mode = 1 - Output_Mode;
-    //   printf("Counter_Freq = %d, Selecter_Voltage = %d, Output_Mode = %d\r\n", Counter_Freq, Selecter_Voltage, Output_Mode); // 0 for Freq, 1 for Voltage
-    // }
     switch (Counter_Freq)
     {
     case 1:
@@ -282,33 +252,12 @@ int main(void)
       HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 0);
       break;  
     }
-
-    // ADC_Value = malloc(ADC_BUFFER_LENGTH * sizeof(uint16_t));
     ADC_ConversionStop_Disable(&hadc1);
     HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&ADC_Value, ADC_BUFFER_LENGTH);
     HAL_Delay(10);
     HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1); // LED_Blue
-    // printf("welcome to a new world! \r\n");
     // SetTextValue(0,1,(uchar *)"hello,world!");
     // SetTextInt32(0,5,ADC_Value[0],0,4);
-    // for (int i = 0; i < ADC_BUFFER_LENGTH;)
-    // {
-    //     ADC_1 = ADC_Value[i++];
-    //     ADC_2 = ADC_Value[i++];
-    // }
-    // printf("  double channel ADC test\r\n");
-    // printf("ADC_Value[0] is %d\r\n", ADC_Value[0]);
-    // printf("ADC_Value[1] is %d\r\n", ADC_Value[1]);
-    // printf("PC0 = %1.4f V\r\n", ADC_1*3.3f/4096);
-    // printf("PC1 = %1.4f V\r\n", ADC_2*3.3f/4096);
-    // MX_DMA_DeInit();
-    // HAL_ADC_MspDeInit(&hadc1);
-    
-    // HAL_ADC_Stop_DMA(&hadc1);
-    
-
-    // HAL_ADC_DeInit(&hadc1);
-    // printf("ADC is stopped!\r\n");
     int PC0_Max = ADC_Value[0], PC1_Max = 0;
     int PC0_Min = ADC_Value[0], PC1_Min = 4095;
     int PC0_Vpp = 0;
