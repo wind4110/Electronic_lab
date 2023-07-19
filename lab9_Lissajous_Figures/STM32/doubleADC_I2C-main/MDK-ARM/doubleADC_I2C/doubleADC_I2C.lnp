@@ -11,6 +11,7 @@
 "doubleadc_i2c\stm32f1xx_it.o"
 "doubleadc_i2c\stm32f1xx_hal_msp.o"
 "doubleadc_i2c\tpl0401a.o"
+"doubleadc_i2c\fft.o"
 "doubleadc_i2c\stm32f1xx_hal_gpio_ex.o"
 "doubleadc_i2c\stm32f1xx_hal_adc.o"
 "doubleadc_i2c\stm32f1xx_hal_adc_ex.o"
@@ -29,6 +30,7 @@
 "doubleadc_i2c\stm32f1xx_hal_tim_ex.o"
 "doubleadc_i2c\stm32f1xx_hal_uart.o"
 "doubleadc_i2c\system_stm32f1xx.o"
+"..\Drivers\CMSIS\Lib\ARM\arm_cortexM3l_math.lib"
 --library_type=microlib --strict --scatter "doubleADC_I2C\doubleADC_I2C.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

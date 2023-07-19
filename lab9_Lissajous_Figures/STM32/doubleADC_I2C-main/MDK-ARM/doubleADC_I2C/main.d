@@ -37,3 +37,10 @@ doubleadc_i2c\main.o: ../Core/Inc/gpio.h
 doubleadc_i2c\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
 doubleadc_i2c\main.o: ..\Drivers\hmi_driver\hmi_driver.h
 doubleadc_i2c\main.o: ..\Drivers\hmi_driver\hmi_user_uart.h
+doubleadc_i2c\main.o: ../Core/Inc/fft.h
+doubleadc_i2c\main.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
+doubleadc_i2c\main.o: ../Drivers/CMSIS/Include/core_cm3.h
+doubleadc_i2c\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
+doubleadc_i2c\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\math.h
+doubleadc_i2c\main.o: ..\Drivers\CMSIS\DSP\Include\arm_const_structs.h
+doubleadc_i2c\main.o: ..\Drivers\CMSIS\DSP\Include\arm_common_tables.h

@@ -1,0 +1,12 @@
+doubleadc_i2c\fft.o: ..\Core\Src\fft.c
+doubleadc_i2c\fft.o: ../Core/Inc/fft.h
+doubleadc_i2c\fft.o: ..\Drivers\CMSIS\DSP\Include\arm_math.h
+doubleadc_i2c\fft.o: ../Drivers/CMSIS/Include/core_cm3.h
+doubleadc_i2c\fft.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
+doubleadc_i2c\fft.o: ../Drivers/CMSIS/Include/cmsis_version.h
+doubleadc_i2c\fft.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+doubleadc_i2c\fft.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+doubleadc_i2c\fft.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
+doubleadc_i2c\fft.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\math.h
+doubleadc_i2c\fft.o: ..\Drivers\CMSIS\DSP\Include\arm_const_structs.h
+doubleadc_i2c\fft.o: ..\Drivers\CMSIS\DSP\Include\arm_common_tables.h

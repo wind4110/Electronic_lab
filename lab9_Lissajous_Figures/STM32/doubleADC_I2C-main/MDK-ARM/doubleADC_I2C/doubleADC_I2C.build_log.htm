@@ -22,17 +22,11 @@ Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
 d:\MyFiles\Electronic_lab\lab9_Lissajous_Figures\STM32\doubleADC_I2C-main\MDK-ARM\doubleADC_I2C.uvprojx
-Project File Date:  07/11/2023
+Project File Date:  07/16/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
-Rebuild target 'doubleADC_I2C'
-assembling startup_stm32f103xe.s...
-compiling hmi_user_uart.c...
-compiling dma.c...
-compiling gpio.c...
-compiling i2c.c...
-compiling adc.c...
+Build target 'doubleADC_I2C'
 compiling main.c...
 ..\Drivers\hmi_driver\hmi_driver.h(73): warning:  #1295-D: Deprecated declaration GUI_CleanScreen - give arg types
   void GUI_CleanScreen();
@@ -44,105 +38,121 @@ compiling main.c...
   void BatchEnd();
 ..\Drivers\hmi_driver\hmi_driver.h(720): warning:  #1295-D: Deprecated declaration FlashEndSaveControl - give arg types
   void FlashEndSaveControl();
-../Core/Src/main.c(126): warning:  #940-D: missing return statement at end of non-void function "Set_Signal_Value" 
+../Core/Src/main.c(166): warning:  #940-D: missing return statement at end of non-void function "Set_Signal_Value" 
   }
-../Core/Src/main.c(107): warning:  #177-D: variable "address_mid"  was declared but never referenced
-      int address_mid = (*address_high + * address_low)/2;
-../Core/Src/main.c(213): warning:  #223-D: function "TPL0401A_Init" declared implicitly
+../Core/Src/main.c(195): warning:  #223-D: function "Set_TPL0401A_Value" declared implicitly
+        Set_TPL0401A_Value(Res);
+../Core/Src/main.c(248): warning:  #181-D: argument is incompatible with corresponding format string conversion
+              printf("%d,%d,%d\n", pData[i - 1], pData[i], pData[i + 1]);
+../Core/Src/main.c(248): warning:  #181-D: argument is incompatible with corresponding format string conversion
+              printf("%d,%d,%d\n", pData[i - 1], pData[i], pData[i + 1]);
+../Core/Src/main.c(248): warning:  #181-D: argument is incompatible with corresponding format string conversion
+              printf("%d,%d,%d\n", pData[i - 1], pData[i], pData[i + 1]);
+../Core/Src/main.c(252): warning:  #940-D: missing return statement at end of non-void function "Select_Max_Number" 
+  }
+../Core/Src/main.c(290): warning:  #223-D: function "TPL0401A_Init" declared implicitly
     TPL0401A_Init();
-../Core/Src/main.c(250): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(304): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
-../Core/Src/main.c(251): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(305): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
-../Core/Src/main.c(252): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(306): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
-../Core/Src/main.c(253): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(307): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 0);
-../Core/Src/main.c(254): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(308): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 1);
-../Core/Src/main.c(257): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(311): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);
+../Core/Src/main.c(312): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+../Core/Src/main.c(316): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);
+../Core/Src/main.c(317): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+../Core/Src/main.c(321): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
-../Core/Src/main.c(258): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(322): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
-../Core/Src/main.c(259): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(323): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
-../Core/Src/main.c(260): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(324): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
-../Core/Src/main.c(261): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(325): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 0);
-../Core/Src/main.c(264): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(328): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);
+../Core/Src/main.c(329): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+../Core/Src/main.c(333): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);
+../Core/Src/main.c(334): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+../Core/Src/main.c(338): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
-../Core/Src/main.c(265): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(339): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
-../Core/Src/main.c(266): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(340): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
-../Core/Src/main.c(267): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(341): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
-../Core/Src/main.c(268): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(342): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 0);
-../Core/Src/main.c(271): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(345): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);
+../Core/Src/main.c(346): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+../Core/Src/main.c(350): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);
+../Core/Src/main.c(351): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+../Core/Src/main.c(355): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
-../Core/Src/main.c(272): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(356): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
-../Core/Src/main.c(273): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(357): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 1);
-../Core/Src/main.c(274): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(358): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
-../Core/Src/main.c(275): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(359): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 0);
-../Core/Src/main.c(278): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(362): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);
+../Core/Src/main.c(363): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+../Core/Src/main.c(367): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);
+../Core/Src/main.c(368): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+../Core/Src/main.c(372): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
-../Core/Src/main.c(279): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(373): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
-../Core/Src/main.c(280): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(374): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, 0);
-../Core/Src/main.c(281): warning:  #188-D: enumerated type mixed with another type
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1); 
-../Core/Src/main.c(282): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(375): warning:  #188-D: enumerated type mixed with another type
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, 1);
+../Core/Src/main.c(376): warning:  #188-D: enumerated type mixed with another type
         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, 0);
-../Core/Src/main.c(343): warning:  #223-D: function "Set_TPL0401A_Value" declared implicitly
+../Core/Src/main.c(379): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 0);
+../Core/Src/main.c(380): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+../Core/Src/main.c(384): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);
+../Core/Src/main.c(385): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+../Core/Src/main.c(419): warning:  #223-D: function "Set_TPL0401A_Value" declared implicitly
       Set_TPL0401A_Value(Res);
-../Core/Src/main.c(314): warning:  #550-D: variable "PC0_Vpp"  was set but never used
-      int PC0_Vpp = 0;
-../Core/Src/main.c: 35 warnings, 0 errors
-compiling hmi_driver.c...
-..\Drivers\hmi_driver\hmi_driver.h(73): warning:  #1295-D: Deprecated declaration GUI_CleanScreen - give arg types
-  void GUI_CleanScreen();
-..\Drivers\hmi_driver\hmi_driver.h(270): warning:  #1295-D: Deprecated declaration CalibrateTouchPane - give arg types
-  void CalibrateTouchPane();
-..\Drivers\hmi_driver\hmi_driver.h(275): warning:  #1295-D: Deprecated declaration TestTouchPane - give arg types
-  void TestTouchPane();
-..\Drivers\hmi_driver\hmi_driver.h(624): warning:  #1295-D: Deprecated declaration BatchEnd - give arg types
-  void BatchEnd();
-..\Drivers\hmi_driver\hmi_driver.h(720): warning:  #1295-D: Deprecated declaration FlashEndSaveControl - give arg types
-  void FlashEndSaveControl();
-..\Drivers\hmi_driver\hmi_driver.c: 5 warnings, 0 errors
-compiling usart.c...
-compiling stm32f1xx_hal_msp.c...
-compiling stm32f1xx_hal_gpio_ex.c...
-compiling stm32f1xx_it.c...
-compiling TPL0401A.c...
-compiling stm32f1xx_hal_adc_ex.c...
-compiling stm32f1xx_hal_adc.c...
-compiling stm32f1xx_hal_gpio.c...
-compiling stm32f1xx_hal_pwr.c...
-compiling stm32f1xx_hal.c...
-compiling stm32f1xx_hal_cortex.c...
-compiling stm32f1xx_hal_rcc_ex.c...
-compiling stm32f1xx_hal_dma.c...
-compiling stm32f1xx_hal_rcc.c...
-compiling stm32f1xx_hal_tim.c...
-compiling stm32f1xx_hal_tim_ex.c...
-compiling stm32f1xx_hal_flash_ex.c...
-compiling stm32f1xx_hal_exti.c...
-compiling stm32f1xx_hal_flash.c...
-compiling stm32f1xx_hal_uart.c...
-compiling stm32f1xx_hal_i2c.c...
-compiling system_stm32f1xx.c...
+../Core/Src/main.c(429): warning:  #167-D: argument of type "int *" is incompatible with parameter of type "uint32_t *"
+      arm_max_f32(PC1_Mag,50,&PC1_Mag_Max,&PC1_Mag_MaxIndex);
+../Core/Src/main.c(439): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *restrict"
+      sprintf(stringtemp, "Counter_Freq = %d, Selecter_Voltage = %d, Output_Mode = %d, Res = %d, phase = %.2f\r\n", Counter_Freq, Selecter_Voltage,
+../Core/Src/main.c: 60 warnings, 0 errors
 linking...
-Program Size: Code=9732 RO-data=396 RW-data=28 ZI-data=6492  
+Program Size: Code=20988 RO-data=83588 RW-data=76 ZI-data=25020  
 FromELF: creating hex file...
-"doubleADC_I2C\doubleADC_I2C.axf" - 0 Error(s), 40 Warning(s).
+"doubleADC_I2C\doubleADC_I2C.axf" - 0 Error(s), 60 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -165,7 +175,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.6.0
-Build Time Elapsed:  00:00:13
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

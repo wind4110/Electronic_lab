@@ -9,14 +9,17 @@
                 "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
                 "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\CMSIS\\Include",
                 "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\hmi_driver",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\CMSIS\\DSP\\Include",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include",
                 "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\MDK-ARM",
                 "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Core\\Src",
-                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\STM32F1xx_HAL_Driver\\Src"
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\STM32F1xx_HAL_Driver\\Src",
+                "d:\\MyFiles\\Electronic_lab\\lab9_Lissajous_Figures\\STM32\\doubleADC_I2C-main\\Drivers\\CMSIS\\Lib\\ARM"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
                 "STM32F103xE",
+                "ARM_MATH_CM3",
                 "__CC_ARM",
                 "__arm__",
                 "__align(x)=",
