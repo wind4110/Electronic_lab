@@ -13,6 +13,9 @@
  * in the root directory of this software component.
  * If no LICENSE file comes with this software, it is provided AS-IS.
  *
+ * 李萨如图形演示装置软件程序，ADC双通道采样x、y轴信号，GPIO引脚输出高低电平控制4051选择合适的电路通路，输出指定频率、波形的信号。
+ * 对一次采样的点进行分析处理后，计算两信号相位差，计算得到峰峰值，反馈调节数字电阻TPA0401的分压阻值，实现信号幅度控制。
+ * 与广州大彩串口屏串口通讯，打印设定值，打印李萨如图形。
  ******************************************************************************
  */
 /* USER CODE END Header */
@@ -121,29 +124,6 @@ int fputc(int ch, FILE *f)
 
 int Set_Signal_Value(int set_value, int Vpp, uchar *address, uchar *address_high, uchar *address_low)
 {
-  // int set_value_mid = set_value * 40960 / 33;
-  // int set_value_min = set_value_mid - 100;
-  // int set_value_max = set_value_mid + 100;
-  // if ((Vpp > set_value_max) && ((*address_high) > (*address_low)))
-  // {
-  //   (*address_high) = *address - 1;
-  //   (*address) = ((*address_low) + (*address)) / 2;
-  //   printf("we find the voltage is too high which is %d, so we set the Res as %d \r\n", Vpp, Res);
-  //   return 1;
-  // }
-  // else if ((Vpp < set_value_min) && ((*address_high) > (*address_low)))
-  // {
-  //   (*address_low) = *address + 1;
-  //   (*address) = ((*address_high) + (*address)) / 2;
-  //   printf("we find the voltage is too low which is %d, so we set the Res as %d \r\n", Vpp, Res);
-  //   return 1;
-  // }
-  // else
-  // {
-  //   (*address) = (*address_low);
-  //   printf("we have finished ajusting the voltage, which is %d. Now the Res is %d \r\n \n", Vpp, Res);
-  //   return 0;
-  // }
   int set_value_mid = set_value * 40960 / 33;
   int set_value_min = set_value_mid - 150;
   int set_value_max = set_value_mid + 150;
@@ -386,7 +366,7 @@ int main(void)
       }
       break;
     }
-    
+
 
 
     ADC_ConversionStop_Disable(&hadc1);
@@ -406,7 +386,7 @@ int main(void)
       PC0_Real[i] = (float)ADC_Value[i * 2];
       PC1_Real[i] = (float)ADC_Value[i * 2 + 1];
     }
-    
+
     arm_max_f32(PC0_Real, NPT, &PC0_Max, &PC0_MaxIndex); // find max value of fft_in_buf[]
     arm_min_f32(PC0_Real, NPT, &PC0_Min, &PC0_MinIndex); // find min value of fft_in_buf[]
     PC0_Vpp = PC0_Max - PC0_Min;
@@ -425,14 +405,14 @@ int main(void)
     PC1_Mag[0] = 0;
     PC1_Mag[1] = 0;
     int PC1_Mag_MaxIndex;
-    float PC1_Mag_Max;    
+    float PC1_Mag_Max;
     arm_max_f32(PC1_Mag,50,&PC1_Mag_Max,&PC1_Mag_MaxIndex);
 
     float f1 = PC1_Mag_MaxIndex * Fs / NPT;
     float f0 = f1 / Counter_Freq;
-        
+
     phase = 2 * Pi * (f0 *t0 - f1 * t1 ) / Fs;
-   
+
    // printf("f0 = %.2f,t0 = %d ,f1 = %.2f ,t1 = %d\r\n",f0,t0,f1,t1);
     if (phase < 0)
         phase += 2 * Pi;
